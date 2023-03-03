@@ -18,7 +18,10 @@ let totalQInDatabase = {
     "prevTrig3": 31,
     "reasClock": 17,
     "matrix": 72,
-    "prevMatrix": 25
+    "prevMatrix": 25,
+    "setsAndRelations": 38,
+    "prevSetsAndRelations": 27,
+    "seriesAndProgression": 34
 };
 
 let q = 0;
