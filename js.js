@@ -21,7 +21,15 @@ let totalQInDatabase = {
     "prevMatrix": 25,
     "setsAndRelations": 38,
     "prevSetsAndRelations": 27,
-    "seriesAndProgression": 34
+    "seriesAndProgression": 34,
+    "prevSeriesAndProgression": 31,
+    "prev_quadraticEquations": 22,
+    "quadraticEquations": 25,
+    "reasSequence": 22,
+    "reasSitting": 19,
+    "reasAlphanumeric": 13,
+    "reasSyllogism": 31,
+    "reasPuzzleNumeric": 40
 };
 
 let q = 0;
@@ -85,10 +93,10 @@ function addListenerToGenerateQuestions() {
             slideNotification("Please select more topic.")
         } else {
             //display salutation
-            document.querySelector(".salutation").style.display="block";
+            document.querySelector(".salutation").style.display = "block";
 
             //stop the stopwatch
-            stop=true;
+            stop = true;
 
             //clear the previous questions
             document.querySelector(".scene").innerHTML = "";
@@ -143,7 +151,7 @@ function getQuestions() {
 
 function addFunctionalityToNextButton() {
     document.querySelector(".buttonNext").addEventListener('click', () => {
-        stopwatchData[index]= document.querySelector(".stopwatch").innerHTML;
+        stopwatchData[index] = document.querySelector(".stopwatch").innerHTML;
         index++;
         if (index >= q) {
             index = q - 1;
@@ -156,7 +164,7 @@ function addFunctionalityToNextButton() {
 
 function addFunctionalityToPreviousButton() {
     document.querySelector(".buttonPrevious").addEventListener('click', () => {
-        stopwatchData[index]= document.querySelector(".stopwatch").innerHTML;
+        stopwatchData[index] = document.querySelector(".stopwatch").innerHTML;
         index--;
         if (index < 0) {
             index = 0;
@@ -170,10 +178,7 @@ function addFunctionalityToPreviousButton() {
 function putAppropriateQuestion() {
     pass = true;
 
-    console.log("stopwatchData.length: "+stopwatchData.length)
-    console.log("index: " + index);
-
-    if (stopwatchData[index]===undefined) {
+    if (stopwatchData[index] === undefined) {
         document.querySelector(".stopwatch").innerHTML = "00:00";
     } else {
         document.querySelector(".stopwatch").innerHTML = stopwatchData[index];
@@ -182,10 +187,9 @@ function putAppropriateQuestion() {
     document.querySelector(".QNAQ_before").innerHTML = (index + 1) + "/" + q;
     document.querySelector(".QNAQ img").setAttribute('src', ques[index]);
     document.querySelector(".QNAA img").setAttribute('src', ques[index].replaceAll("Q", "A"));
+    document.querySelector(".QNAA").scrollTo(0, 0);
     document.querySelector(".QNAA_after").classList.remove("displayNone");
     preloadNextQNA();
-
-    console.log(stopwatchData);
 }
 
 function addFunctionalityToRevealAnswer() {
@@ -212,4 +216,21 @@ function slideNotification(message) {
     setTimeout(() => {
         notoficationPannel.parentNode.style.top = "-100%";
     }, 3000);
+}
+
+///adding keypress listener to the scene: right arrow next question, left arrow previous, enter shows answer...
+{
+    document.addEventListener('keydown', (event) => {
+        console.log(event.key);
+        try {
+            if (event.key === "ArrowLeft")
+                document.querySelector(".buttonPrevious").click();
+            else if (event.key === "ArrowRight")
+                document.querySelector(".buttonNext").click();
+            else if (event.key === "Enter")
+                document.querySelector(".QNAA_after").click();
+        } catch (e) {
+            //pass
+        }
+    });
 }
