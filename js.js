@@ -29,7 +29,12 @@ let totalQInDatabase = {
     "reasSitting": 19,
     "reasAlphanumeric": 13,
     "reasSyllogism": 31,
-    "reasPuzzleNumeric": 40
+    "reasPuzzleNumeric": 40,
+    "circleCompleteRevision": 27,
+    "reasSeriesAlphabet": 12,
+    "reasAnalogy": 10,
+    "compBooleanAlgebra": 12,
+    "parabolaCompleteRevision": 16
 };
 
 let q = 0;
@@ -114,8 +119,11 @@ function addListenerToGenerateQuestions() {
                 <img src="` + ques[0] + `" >
             </div>
             <div class="QNAA">
-                <div class="QNAA_after">Click to Show Answer</div>
+                <div class="QNAA_after">Click to Show Solution</div>
+            <div>
+                <span>Solution:</span> <br>
                 <img src="` + ques[0].replaceAll('Q', 'A') + `">
+            </div>
             </div>
         </div>
         <div class="buttonNext">Next</div>

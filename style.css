@@ -42,7 +42,15 @@ body {
     position: relative;
     margin-bottom: 0;
     text-align: center;
+}
 
+@media only screen and (max-width: 800px) {
+    .heading h1 {
+        font-size: 2rem;
+    }
+    .heading h2{
+        font-size: 1rem;
+    }
 }
 
 .heading h1 span {
@@ -82,12 +90,15 @@ body {
 }
 
 .topicSelectionID1 {
-    max-width: 1000px;
+    /*max-width: 1000px;*/
+    background: url("background1.jpg");
+    padding: 2rem;
+
 }
 
 .topicsCheckboxes {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     grid-gap: 10px;
     font-size: 1.2rem;
 }
@@ -194,15 +205,17 @@ body {
 
 .QNAQ, .QNAA {
     padding: 3px;
-    /*background-color: red;*/
     height: 45vh;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     border-radius: 3px;
     background-color: white;
     position: relative;
     overflow-y: scroll;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
 }
 
 .QNAQ_before {
@@ -251,8 +264,8 @@ body {
 
 .QNAA img {
     margin-bottom: 3rem;
-    width: 60%;
-    height: auto;
+    /*width: 60%;*/
+    /*height: auto;*/
     text-align: center;
 }
 
@@ -275,7 +288,7 @@ body {
 
 @media only screen and (max-width: 800px) {
     .buttonNext, .buttonPrevious {
-        bottom:0;
+        bottom: 0;
     }
 }
 
