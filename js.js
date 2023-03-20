@@ -3,6 +3,7 @@ let xInput = document.querySelector("#x");
 let notoficationPannel = document.querySelector("#warning");
 let checkboxes = document.querySelectorAll("input[type='checkbox']");
 let generateQuestionsButton = document.querySelector("#getQuestionsButton");
+let getQuestionsSeriesWiseButton = document.querySelector("#getQuestionsSeriesWiseButton");
 
 let totalQInDatabase = {
     "circle": 42,
@@ -90,29 +91,28 @@ function addListenerToRange() {
 }
 
 
-function addListenerToGenerateQuestions() {
-    generateQuestionsButton.addEventListener('click', async () => {
-        if (q === 0) {
-            slideNotification("Please select at least one topic.")
-        } else if (totalQuestions < q) {
-            slideNotification("Please select more topic.")
-        } else {
-            //display salutation
-            document.querySelector(".salutation").style.display = "block";
+function generateDPT(shuffle) {
+    if (q === 0) {
+        slideNotification("Please select at least one topic.")
+    } else if (totalQuestions < q) {
+        slideNotification("Please select more topic.")
+    } else {
+        //display salutation
+        document.querySelector(".salutation").style.display = "block";
 
-            //stop the stopwatch
-            stop = true;
+        //stop the stopwatch
+        stop = true;
 
-            //clear the previous questions
-            document.querySelector(".scene").innerHTML = "";
+        //clear the previous questions
+        document.querySelector(".scene").innerHTML = "";
 
-            //get the questions, shuffle them
-            ques = getQuestions();
+        //get the questions, shuffle them
+        ques = getQuestions(shuffle);
 
-            //add the questions
-            var sceneID1 = document.createElement("div");
-            sceneID1.classList.add("sceneID1");
-            sceneID1.innerHTML = `
+        //add the questions
+        var sceneID1 = document.createElement("div");
+        sceneID1.classList.add("sceneID1");
+        sceneID1.innerHTML = `
         <div class="sceneQNA">
             <div class="QNAQ">
                 <div class="QNAQ_before">` + (index + 1) + `/` + q + `</div>
@@ -129,30 +129,50 @@ function addListenerToGenerateQuestions() {
         <div class="buttonNext">Next</div>
         <div class="buttonPrevious">Previous</div>
             `;
-            document.querySelector(".scene").appendChild(sceneID1);
-            addStopwatch();
-            addFunctionalityToNextButton();
-            addFunctionalityToPreviousButton();
-            addFunctionalityToRevealAnswer();
-            sceneID1.scrollIntoView({behavior: "smooth", block: "start"});
-            preloadNextQNA();
-        }
-    });
+        document.querySelector(".scene").appendChild(sceneID1);
+        addStopwatch();
+        addFunctionalityToNextButton();
+        addFunctionalityToPreviousButton();
+        addFunctionalityToRevealAnswer();
+        sceneID1.scrollIntoView({behavior: "smooth", block: "start"});
+        preloadNextQNA();
+    }
+}
+
+function addListenerToGenerateQuestions() {
+    generateQuestionsButton.addEventListener('click', ()=>{generateDPT(true)});
+    getQuestionsSeriesWiseButton.addEventListener('click', ()=>{generateDPT(false)});
 }
 
 
 //get random questions from different topics
-function getQuestions() {
+function getQuestions(shuffle = true) {
     var questions = [];
     const keys = Object.keys(topicsSelected);
 
-    while (questions.length < q) {
-        var luckyTopic = keys[Math.floor(Math.random() * keys.length)];
-        var luckyQno = Math.floor(Math.random() * topicsSelected[luckyTopic]) + 1;
-        var qAddress = "images/" + luckyTopic + "/Q/" + luckyTopic + "Q (" + luckyQno + ").jpg";
-        if (!questions.includes(qAddress)) {
-            questions.push(qAddress);
+    if (shuffle) {
+        while (questions.length < q) {
+            var luckyTopic = keys[Math.floor(Math.random() * keys.length)];
+            var luckyQno = Math.floor(Math.random() * topicsSelected[luckyTopic]) + 1;
+            var qAddress = "images/" + luckyTopic + "/Q/" + luckyTopic + "Q (" + luckyQno + ").jpg";
+            if (!questions.includes(qAddress)) {
+                questions.push(qAddress);
+            }
         }
+    } else {
+        // TODO: return questions without shuffling
+        // for (let qInArray = 0; questions.length >= qInArray ; qInArray++) {
+        //
+        // }
+        outer:
+        for (const topic of keys) {
+            for (let i = 0; i < topicsSelected[topic]; i++) {
+                qAddress = "images/" + topic + "/Q/" + topic + "Q (" + (i+1) + ").jpg";
+                questions.push(qAddress);
+                if (questions.length >= q) break outer
+            }
+        }
+        console.log(questions);
     }
     return questions;
 }

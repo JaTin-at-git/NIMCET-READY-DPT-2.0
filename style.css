@@ -139,7 +139,7 @@ body {
     justify-content: center;
 }
 
-#getQuestionsButton {
+#getQuestionsButton, #getQuestionsSeriesWiseButton {
     border: 1px solid #075c88;
     padding: .5rem 2rem;
     border-radius: 10px;
@@ -147,9 +147,10 @@ body {
     font-weight: bold;
     background-color: #075c88;
     user-select: none;
-    display: block;
     min-width: fit-content;
     margin: 0 1rem 10px;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -313,6 +314,40 @@ body {
 }
 
 
+/*//////////genetate questions series wise/////////////*/
+.getQuestionsDiv {
+    margin: 0 1rem 1rem;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+}
+
+.getQuestionsDivID1 {
+    max-width: 300px;
+    max-height: 200px;
+    display: inline-flex;
+    overflow-x: scroll;
+    transform: translateX(12%);
+    box-sizing: border-box;
+}
+
+#getQuestionsSeriesWiseButton {
+    border: 1px solid #818080;
+    background-color: #818080;
+}
+
+#getQuestionsButton:active. #getQuestionsSeriesWiseButton:active {
+    transform: scale(.99);
+}
+
+.noteDiv {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    min-width: 100vw;
+    padding: 0 5rem;
+}
 /*/////////stopwatch/////*/
 .stopwatch {
     font-family: monospace;
