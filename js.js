@@ -16,7 +16,7 @@ let totalQInDatabase = {
     "prevTrig": 16,
     "prevTrig2": 31,
     "prevTrig3": 31,
-    "reasClock": 17,
+    "reasClock": 19,
     "matrix": 72,
     "prevMatrix": 25,
     "setsAndRelations": 38,
