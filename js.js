@@ -35,7 +35,10 @@ let totalQInDatabase = {
     "reasSeriesAlphabet": 12,
     "reasAnalogy": 10,
     "compBooleanAlgebra": 12,
-    "parabolaCompleteRevision": 16
+    "parabolaCompleteRevision": 16,
+    "ellipseHyperbolaCompleteRevision" :19,
+    "straightLinesCompleteRevision" :36,
+    "prevCoordinateGeometry" : 65
 };
 
 let q = 0;
