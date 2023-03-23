@@ -36,9 +36,10 @@ let totalQInDatabase = {
     "reasAnalogy": 10,
     "compBooleanAlgebra": 12,
     "parabolaCompleteRevision": 16,
-    "ellipseHyperbolaCompleteRevision" :19,
-    "straightLinesCompleteRevision" :36,
-    "prevCoordinateGeometry" : 65
+    "ellipseHyperbolaCompleteRevision": 19,
+    "straightLinesCompleteRevision": 36,
+    "prevCoordinateGeometry": 65,
+    "vectorCompleteRevision": 44
 };
 
 let q = 0;
@@ -108,6 +109,7 @@ function generateDPT(shuffle) {
 
         //clear the previous questions
         document.querySelector(".scene").innerHTML = "";
+        index = 0;
 
         //get the questions, shuffle them
         ques = getQuestions(shuffle);
@@ -143,8 +145,12 @@ function generateDPT(shuffle) {
 }
 
 function addListenerToGenerateQuestions() {
-    generateQuestionsButton.addEventListener('click', ()=>{generateDPT(true)});
-    getQuestionsSeriesWiseButton.addEventListener('click', ()=>{generateDPT(false)});
+    generateQuestionsButton.addEventListener('click', () => {
+        generateDPT(true)
+    });
+    getQuestionsSeriesWiseButton.addEventListener('click', () => {
+        generateDPT(false)
+    });
 }
 
 
@@ -168,13 +174,13 @@ function getQuestions(shuffle = true) {
         //
         // }
         outer:
-        for (const topic of keys) {
-            for (let i = 0; i < topicsSelected[topic]; i++) {
-                qAddress = "images/" + topic + "/Q/" + topic + "Q (" + (i+1) + ").jpg";
-                questions.push(qAddress);
-                if (questions.length >= q) break outer
+            for (const topic of keys) {
+                for (let i = 0; i < topicsSelected[topic]; i++) {
+                    qAddress = "images/" + topic + "/Q/" + topic + "Q (" + (i + 1) + ").jpg";
+                    questions.push(qAddress);
+                    if (questions.length >= q) break outer
+                }
             }
-        }
         console.log(questions);
     }
     return questions;
