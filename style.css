@@ -158,22 +158,19 @@ body {
     transform: scale(.99);
 }
 
-
-/*//////////////////*/
-
 /*//////////////////////*/
 .me {
-    margin-top: 5rem;
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: center;
     align-items: center;
     text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translatex(-50%);
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    /*left: 50%;*/
+    /*transform: translatex(-50%);*/
+    background: url("background1.jpg") repeat;
 }
 
 .me span {
@@ -190,7 +187,6 @@ body {
     justify-content: center;
     box-sizing: border-box;
     height: 100%;
-    margin-bottom: 4rem;
     position: relative;
     background: url("background1.jpg");
     border-bottom: 1px solid black;

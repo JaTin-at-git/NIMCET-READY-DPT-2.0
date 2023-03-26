@@ -39,7 +39,9 @@ let totalQInDatabase = {
     "ellipseHyperbolaCompleteRevision": 19,
     "straightLinesCompleteRevision": 36,
     "prevCoordinateGeometry": 65,
-    "vectorCompleteRevision": 44
+    "vectorCompleteRevision": 44,
+    "reasDice": 7,
+    "aptiRatio": 41
 };
 
 let q = 0;
